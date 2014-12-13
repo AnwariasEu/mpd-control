@@ -1,0 +1,6 @@
+{
+"uuid": "mpd-previous@cinnamon.org",
+"name": "MPD Previous",
+"description": "Go back to the last MPD Titel",
+"icon": "go-previous"
+}

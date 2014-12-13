@@ -1,5 +1,5 @@
 {
-"uuid": "mpd-next@local.org",
+"uuid": "mpd-next@cinnamon.org",
 "name": "MPD Next",
 "description": "Skip current MPD Titel",
 "icon": "go-next"
