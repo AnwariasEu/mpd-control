@@ -1,0 +1,6 @@
+{
+"uuid": "mpd-pause-play@cinnamon.org",
+"name": "MPD Pause/Play",
+"description": "Pause/Start Playback",
+"icon": "pause-play"
+}
