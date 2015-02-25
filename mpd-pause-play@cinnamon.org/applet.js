@@ -1,6 +1,8 @@
 const Lang = imports.lang;
 const Applet = imports.ui.applet;
 const GLib = imports.gi.GLib;
+const PanelMenu = imports.ui.panelMenu;
+const PopupMenu = imports.ui.popupMenu;
 const Gettext = imports.gettext.domain('cinnamon-applets');
 const _ = Gettext.gettext;
 
@@ -15,7 +17,7 @@ MyApplet.prototype = {
     Applet.IconApplet.prototype._init.call(this, orientation);  
 
     try {
-      this.set_applet_icon_name("pause-play");
+      this.set_applet_icon_name("mpd-pause");
       this.set_applet_tooltip(_("Pause/Start Playback"));
     }
     catch (e) {
@@ -24,13 +26,19 @@ MyApplet.prototype = {
   },
 
   on_applet_clicked: function(event) {
-    GLib.spawn_command_line_async('mpc toggle');
-  }
+    GLib.spawn_command_line_sync('mpc toggle');
+    this._toggle_icon();
+  },
 
-  //TODO
-  //on_applet_mouse_over: function(event) {
-  //  GLib.spawn_comman_line_async(
-  //}
+  _toggle_icon: function(){
+      let [result, stdout, stderr] = GLib.spawn_command_line_sync('mpc status');
+    if ( stdout.toString().match(/playing/g)) {
+      this.set_applet_icon_name("mpd-play");
+    } else {
+      this.set_applet_icon_name("mpd-pause");
+    }
+  },
+
 };
 
 function main(metadata, orientation) {
