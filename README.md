@@ -10,4 +10,4 @@ ToDo:
 - Icons pause-play
 - Fuse all apllets into one with 3 Buttons
 - Show current titel when hovered over
-- Orientation when moved
+- Orientation when moved **FIXED**
