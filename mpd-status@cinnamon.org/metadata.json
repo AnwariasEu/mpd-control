@@ -1,0 +1,5 @@
+{
+"uuid": "mpd-status@cinnamon.org",
+"name": "MPD status",
+"description": "Applet showing current song in mpd and provides additional information when clicked on"
+}
