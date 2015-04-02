@@ -11,7 +11,8 @@ PREVDIR="mpd-previous@cinnamon.org"
 STATUSDIR="mpd-status@cinnamon.org"
 
 #MD5 check
-if [ ! "$(md5sum -c checklist.chk)" ];then
+md5sum -c checklist.chk
+if [ $? -ne 0 ];then
 	echo "md5sum missmatch installation stopped"
 	exit 1
 fi
