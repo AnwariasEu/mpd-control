@@ -4,37 +4,35 @@ CINNAMONDIR=$HOME"/.local/share/cinnamon/"
 echo CINNAMONDIR $CINNAMONDIR
 APPLETDIR=$CINNAMONDIR"applets/"
 echo APPLETDIR $APPLETDIR
-ICONDIR="/usr/share/pixmaps/"
-echo ICONDIR $ICONDIR
 
 PAUSEDIR="mpd-pause-play@cinnamon.org"
-NEXTDIR="mpd-next@cinnmon.org"
-PREVDIR="mpd-prev@cinnamon.org"
-STATUSDIR="nmpd-status@cinnamon.org"
+NEXTDIR="mpd-next@cinnamon.org"
+PREVDIR="mpd-previous@cinnamon.org"
+STATUSDIR="mpd-status@cinnamon.org"
 
+#MD5 check
+if [ ! "$(md5sum -c checklist.chk)" ];then
+	echo "md5sum missmatch installation stopped"
+	exit 1
+fi
 
-
-echo "By default this scrips installs the newest version of mpd-control"
+echo "By default this scrips installs the newest version of mpd-control into the users directory."
 if [ -d "$CINNAMONDIR" ]; then
 	if [ ! -d "$APPLETDIR" ]; then
 		mkdir $APPLETDIR 
 	fi
 	echo "cp -r ./$NEXTDIR/ $APPLETDIR"
-#	cp -r ./$NEXTDIR/ $APPLETDIR
+	cp -r ./$NEXTDIR/ $APPLETDIR
 	echo "cp -r ./$PREVDIR/ $APPLETDIR"
-#	cp -r ./$PREVDIR/ $APPLETDIR
+	cp -r ./$PREVDIR/ $APPLETDIR
 	echo "cp -r ./$STATUSDIR/ $APPLETDIR"
-#	cp -r ./$STATUSDIR/ $APPLETDIR
+	cp -r ./$STATUSDIR/ $APPLETDIR
 	echo "cp -r ./$PAUSEDIR/ $APPLETDIR"
-#	cp -r ./$PAUSEDIR/ $APPLETDIR
-	echo "cp ./mpd-control-icons/* $ICONDIR"
-#	cp ./mpd-control-icons/* $ICONDIR
+	cp -r ./$PAUSEDIR/ $APPLETDIR
 else
 	echo "cinnamon needs to be installed"
 	exit 1
 fi
 
-#MD5 check
-#find ./ -not -name hashsum -type f -exec md5sum {} \; | sort -k 34 
-
+echo -e "Installation successful.\nTo uninstall remove $APPLETDIR{$PAUSEDIR,$NEXTDIR,$PREVDIR$,$STATUSDIR}"
 exit 0
