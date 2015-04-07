@@ -10,5 +10,6 @@ if [[ ! -z $1 ]];then
 	fi
 fi
 
-export MPD_HOST=$PASSWORD$SERVER;
-mpc status;
+export MPD_HOST=$PASSWORD$SERVER
+mpc status
+exit 0
